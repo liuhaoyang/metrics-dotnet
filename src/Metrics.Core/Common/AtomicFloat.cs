@@ -30,19 +30,12 @@ public class AtomicFloat
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public float Add(float value)
     {
-        float sum;
-        while (true)
+        float sum, curr;
+        do
         {
-            var initValue = _value;
-            unchecked
-            {
-                sum = initValue + value;
-            }
-            if (Math.Abs(initValue - Interlocked.CompareExchange(ref _value, sum, initValue)) < Tolerance)
-            {
-                break;
-            }
-        }
+            curr = _value;
+            sum =  curr + value;
+        } while (Math.Abs(curr - Interlocked.CompareExchange(ref _value, sum, curr)) >= Tolerance);
         return sum;
     }
 }

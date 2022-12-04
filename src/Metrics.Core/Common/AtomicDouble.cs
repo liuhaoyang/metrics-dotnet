@@ -30,19 +30,12 @@ public class AtomicDouble
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public double Add(double value)
     {
-        double sum;
-        while (true)
+        double sum, curr;
+        do
         {
-            var initValue = _value;
-            unchecked
-            {
-                sum = initValue + value;
-            }
-            if (Math.Abs(initValue - Interlocked.CompareExchange(ref _value, sum, initValue)) < Tolerance)
-            {
-                break;
-            }
-        }
+            curr = _value;
+            sum =  curr + value;
+        } while (Math.Abs(curr - Interlocked.CompareExchange(ref _value, sum, curr)) >= Tolerance);
         return sum;
     }
 }
