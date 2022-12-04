@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Abstractions", "Metrics.Abstractions\Metrics.Abstractions.csproj", "{3F3B7EF0-A841-494B-92DC-7BE71D3D2A38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Abstractions", "src\Metrics.Abstractions\Metrics.Abstractions.csproj", "{3F3B7EF0-A841-494B-92DC-7BE71D3D2A38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Core", "Metrics.Core\Metrics.Core.csproj", "{97DCF082-E91B-45A0-A5CC-F94E03578E23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Core", "src\Metrics.Core\Metrics.Core.csproj", "{97DCF082-E91B-45A0-A5CC-F94E03578E23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{70E1E9A8-2E2C-4A65-8C54-79DB70C3434D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{956F8B98-B438-429A-BEAE-57E1A64028DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metrics.Core.Tests", "tests\Metrics.Core.Tests\Metrics.Core.Tests.csproj", "{6D7CDBFA-A672-435F-ABBF-D43C14E2831A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,14 @@ Global
 		{97DCF082-E91B-45A0-A5CC-F94E03578E23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97DCF082-E91B-45A0-A5CC-F94E03578E23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97DCF082-E91B-45A0-A5CC-F94E03578E23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7CDBFA-A672-435F-ABBF-D43C14E2831A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7CDBFA-A672-435F-ABBF-D43C14E2831A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7CDBFA-A672-435F-ABBF-D43C14E2831A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7CDBFA-A672-435F-ABBF-D43C14E2831A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3F3B7EF0-A841-494B-92DC-7BE71D3D2A38} = {956F8B98-B438-429A-BEAE-57E1A64028DA}
+		{97DCF082-E91B-45A0-A5CC-F94E03578E23} = {956F8B98-B438-429A-BEAE-57E1A64028DA}
+		{6D7CDBFA-A672-435F-ABBF-D43C14E2831A} = {70E1E9A8-2E2C-4A65-8C54-79DB70C3434D}
 	EndGlobalSection
 EndGlobal
