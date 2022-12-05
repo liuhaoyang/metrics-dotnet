@@ -1,8 +1,8 @@
 using System.Runtime.CompilerServices;
 
-namespace Metrics.Core.Common;
+namespace Metrics.Core.Common.Threading;
 
-public class AtomicLong
+public class AtomicLong : Atomic<long>
 {
     private long _value;
 

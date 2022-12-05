@@ -1,13 +1,13 @@
 using System.Runtime.CompilerServices;
 
-namespace Metrics.Core.Common;
+namespace Metrics.Core.Common.Threading;
 
-public class AtomicFloat
+public class AtomicDouble : Atomic<double>
 {
-    public const float Tolerance = 1e-6f;
-    private float _value;
+    public const double Tolerance = 1e-6f;
+    private double _value;
 
-    public float Value
+    public double Value
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
@@ -20,7 +20,7 @@ public class AtomicFloat
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float GetAndSet(float value)
+    public double GetAndSet(double value)
     {
         var ret = Value;
         Value = value;
@@ -28,14 +28,15 @@ public class AtomicFloat
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float Add(float value)
+    public double Add(double value)
     {
-        float sum, curr;
+        double sum, curr;
         do
         {
             curr = _value;
-            sum =  curr + value;
+            sum = curr + value;
         } while (Math.Abs(curr - Interlocked.CompareExchange(ref _value, sum, curr)) >= Tolerance);
+
         return sum;
     }
 }

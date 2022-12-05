@@ -1,8 +1,8 @@
 using System.Runtime.CompilerServices;
 
-namespace Metrics.Core.Common;
+namespace Metrics.Core.Common.Threading;
 
-public class AtomicInt
+public class AtomicInt : Atomic<int>
 {
     private int _value;
 

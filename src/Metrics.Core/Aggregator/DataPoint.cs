@@ -5,7 +5,7 @@ public interface DataPoint
     string Name { get; }
 }
 
-public class DataPoint<T> : DataPoint
+public class DataPoint<T> : DataPoint where T : struct
 {
     public string Name { get; }
 
@@ -14,7 +14,7 @@ public class DataPoint<T> : DataPoint
     private DataPoint(string name, T value)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
-        Value = value ?? throw new ArgumentNullException(nameof(value));
+        Value = value;
     }
 
     public static DataPoint<T> Of(string name, T value) => new(name, value);

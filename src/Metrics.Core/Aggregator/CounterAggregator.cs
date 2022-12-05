@@ -1,33 +1,25 @@
-using Metrics.Core.Common;
+using Metrics.Core.Common.Threading;
 
 namespace Metrics.Core.Aggregator;
 
-public class LongCounterAggregator : IAggregator<long>
+public class CounterAggregator<T, TAtomic> : IAggregator<T>
+    where T : struct
+    where TAtomic : Atomic<T>, new()
 {
-    private readonly AtomicLong _value = new();
+    private readonly TAtomic _value = new();
 
-    public void Add(long value)
+    public void Add(T value)
     {
         _value.Add(value);
     }
 
-    public DataPoint[] GetResults(in AggregateContext context)
+    public DataPoint<T>[] GetResults(in AggregateContext context)
     {
-        return new DataPoint[] { DataPoint<long>.Of("value", _value.GetAndSet(0)) };
-    }
-}
-
-public class IntCounterAggregator : IAggregator<int>
-{
-    private readonly AtomicInt _value = new();
-    
-    public void Add(int value)
-    {
-        _value.Add(value);
+        return new[] { DataPoint<T>.Of("value", _value.GetAndSet(default)) };
     }
 
-    public DataPoint[] GetResults(in AggregateContext context)
+    DataPoint[] IAggregator.GetResults(in AggregateContext context)
     {
-        return new DataPoint[] { DataPoint<long>.Of("value", _value.GetAndSet(0)) };
+        return GetResults(in context);
     }
 }
