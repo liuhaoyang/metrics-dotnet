@@ -1,7 +1,6 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
-using Metrics.Core.Common;
+using Metrics.Core.Common.Threading;
 using Xunit;
 
 namespace Metrics.Core.Tests.Common;

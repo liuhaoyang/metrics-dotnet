@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Metrics.Core.Common;
+using Metrics.Core.Common.Threading;
 using Xunit;
 
 namespace Metrics.Core.Tests.Common;
@@ -17,7 +17,8 @@ public class AtomicDoubleTest
         {
             Value = 1
         };
-        Assert.Equal(expect, atomic.Add(value));
+        atomic.Add(value);
+        Assert.True(Math.Abs(expect - atomic.Value) < AtomicDouble.Tolerance);
     }
 
     [Theory]
