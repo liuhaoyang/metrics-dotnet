@@ -17,9 +17,4 @@ public class GaugeAggregator<T, TAtomic> : IAggregator<T>
     {
         return new[] { DataPoint<T>.Of("value",  _value.GetAndSet(default)) };
     }
-
-    DataPoint[] IAggregator.GetResults(in AggregateContext context)
-    {
-        return GetResults(in context);
-    }
 }

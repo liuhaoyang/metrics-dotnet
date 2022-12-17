@@ -2,12 +2,7 @@ using Metrics.Abstractions;
 
 namespace Metrics.Core.Aggregator;
 
-public interface IAggregator
-{
-    DataPoint[] GetResults(in AggregateContext context);
-}
-
-public interface IAggregator<T> : IAggregator where T : struct
+public interface IAggregator<T> where T : struct
 {
     void Add(T value);
     
