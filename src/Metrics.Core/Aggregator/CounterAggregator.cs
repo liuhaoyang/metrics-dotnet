@@ -2,11 +2,10 @@ using Metrics.Core.Common.Threading;
 
 namespace Metrics.Core.Aggregator;
 
-public class CounterAggregator<T, TAtomic> : IAggregator<T>
+public class CounterAggregator<T> : IAggregator<T>
     where T : struct
-    where TAtomic : Atomic<T>, new()
 {
-    private readonly TAtomic _value = new();
+    private readonly Atomic<T> _value = AtomicFactory.Create<T>();
 
     public void Add(T value)
     {
